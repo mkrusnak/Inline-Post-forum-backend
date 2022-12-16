@@ -1,87 +1,74 @@
-const bcryptjs = require('bcryptjs')
-const User = require('../models/User.model')
-const jwt = require('jsonwebtoken')
+const bcryptjs = require("bcryptjs");
+const User = require("../models/User.model");
+const jwt = require("jsonwebtoken");
 
 const signupController = (req, res, next) => {
+  const { email, password, username } = req.body;
 
-const { email, password, username} = req.body
-
-if(!email || !password || !username) {
+  if (!email || !password || !username) {
     return res.status(400).json({
-        error: {
-            message: 'Missing email, username or password'
-        }
-    })
-}
+      error: {
+        message: "Missing email, username or password",
+      },
+    });
+  }
 
-bcryptjs.hash(password, 10)
-.then(hashedPassword => {
-    return User.create({
+  bcryptjs
+    .hash(password, 10)
+    .then((hashedPassword) => {
+      return User.create({
         username,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+      });
     })
-   
-})
-.then(createdUser => {
-    res.json(createdUser)
-})
-.catch(err => res.send(err))
-}
-
+    .then((createdUser) => {
+      res.json(createdUser);
+    })
+    .catch((err) => res.send(err));
+};
 
 const loginController = (req, res, next) => {
-    const { email, password} = req.body;
+  const { email, password } = req.body;
 
-    if (!email || !password) {
-   return res.json({
-    error: {
-        message: 'missing email or password'
-    }
-   })
-    }
-    
-
+  if (!email || !password) {
+    return res.json({
+      error: {
+        message: "missing email or password",
+      },
+    });
+  }
 
   let myUser;
 
-
-  User.findOne({email})
-  .then(foundUser => {
-    if(!foundUser){
-      return Promise.reject('Email or password is wrong')
-    }
-    myUser = foundUser;
-    return bcryptjs.compare(password, foundUser.password)
-  })
-  .then(isValidPassword => {
-    if (!isValidPassword) {
-        return Promise.reject('Invalid email or password')
-    }
-    const payload = {
+  User.findOne({ email })
+    .then((foundUser) => {
+      if (!foundUser) {
+        return Promise.reject("Email or password is wrong");
+      }
+      myUser = foundUser;
+      return bcryptjs.compare(password, foundUser.password);
+    })
+    .then((isValidPassword) => {
+      if (!isValidPassword) {
+        return Promise.reject("Invalid email or password");
+      }
+      const payload = {
         _id: myUser._id,
         username: myUser.username,
-        email: myUser.email
-    };
- 
-    const authToken = jwt.sign(
-        payload,
-        process.env.TOKEN_SECRET,
-        {algorithm: 'HS256', expiresIn: '6h'}
-    );
+        email: myUser.email,
+      };
 
-    res.json({
-        authToken: authToken
-    });
+      const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {
+        algorithm: "HS256",
+        expiresIn: "6h",
+      });
 
+      res.json({
+        authToken: authToken,
+      });
+    })
+    .catch((err) => res.send(err));
+};
 
-
-  })
-  .catch(err => res.send(err))
-
-
-}
-
-
-
-module.exports = {signupController, loginController}
+module.exports = { signupController, loginController };

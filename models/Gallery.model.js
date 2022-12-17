@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const gallerySchema = new Schema({
     imageUrl: {type: String, required: true},
     title: {type: String, required: true},
-    owner: { type: Schema.Types.ObjectId, ref: "User" }
+    owner: { type: Schema.Types.ObjectId, ref: "User" },
+    comments: [{type: Schema.Types.ObjectId, ref: "Comment"}]
 },
 { timestamps: true })
 

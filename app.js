@@ -7,6 +7,8 @@ const {isAuthenticated} = require('./middleware/jwt.middleware')
 
 const authRouter = require('./routes/auth.routes')
 const listingRouter = require('./routes/listing.routes')
+const messagesRouter = require('./routes/messages.routes')
+const forumRouter = require('./routes/forum.routes')
 
 const PORT = process.env.PORT;
 
@@ -21,6 +23,10 @@ app.use(express.json());
 app.use('/auth', authRouter)
 
 app.use('/listings', isAuthenticated, listingRouter)
+
+app.use('/messages', isAuthenticated, messagesRouter )
+
+app.use('/forum', forumRouter)
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(x => {

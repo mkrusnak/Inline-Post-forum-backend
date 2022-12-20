@@ -1,21 +1,17 @@
 const express = require('express')
 const { isAuthenticated } = require('../middleware/jwt.middleware')
 const router = express.Router()
-const {addListingController} = require ('../controllers/listings.controllers')
+const {addListingController, updateListingController, deleteListingController,
+     getListingsController, listingIdGet} = require ('../controllers/listings.controllers')
 
+router.get('/', isAuthenticated, getListingsController)
+
+router.get('/:listingId', isAuthenticated, listingIdGet)
 
 router.post('/add', isAuthenticated, addListingController)
 
+router.put('/edit/:listingId', isAuthenticated, updateListingController)
 
-
-
-// router.post('/signup', signupController);
-
-// router.post('/login', loginController)
-
-// router.get('/verify', isAuthenticated, (req, res, next) => {
-//     res.status(200).json(req.payload)
-// })
-
+router.delete('/delete', isAuthenticated, deleteListingController)
 
 module.exports = router;

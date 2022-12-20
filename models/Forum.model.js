@@ -3,15 +3,16 @@ const Schema = mongoose.Schema;
 
 const forumSchema = new Schema(
   {
-    profilePic: {type: String},
     video: {type: String},
-    image: {type: String},
+    image: [{type: String}],
     subject: {type: String, required: true},
     body: { type: String, required: true },
-    sender: {
+    author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-    }
+    },
+    comments: [{type: mongoose.Schema.Types.ObjectId,
+    ref: "Comment"}]
   },
   { timestamps: true }
 );

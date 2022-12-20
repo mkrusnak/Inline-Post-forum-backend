@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
+    
+    title: {type: String},
+
     makeModel: { type: String,
                 required: true },
 
@@ -18,14 +21,14 @@ const listingSchema = new Schema({
     price: { type: Number,
                 required: true },
 
-    imageUrl: [{ type: String ,
+    imagesUrl: [{ type: String ,
                 required: true}],
 
     owner: { type: Schema.Types.ObjectId, ref: "User" },
 
     knownFlaws: {type: String},
     
-    tradeOk: {type: String}
+    tradeOk: {type: Boolean}
   },
   { timestamps: true });
 

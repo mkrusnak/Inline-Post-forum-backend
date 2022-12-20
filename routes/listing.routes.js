@@ -12,6 +12,6 @@ router.post('/add', isAuthenticated, addListingController)
 
 router.put('/edit/:listingId', isAuthenticated, updateListingController)
 
-router.delete('/delete', isAuthenticated, deleteListingController)
+router.delete('/delete/:listingId', isAuthenticated, deleteListingController)
 
 module.exports = router;

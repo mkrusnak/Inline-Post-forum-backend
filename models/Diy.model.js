@@ -5,9 +5,10 @@ const Schema = mongoose.Schema;
 const diySchema = new Schema({
     profilePic: {type: String},
     title: {type: String, required: true},
-    images: [{type: String, required: true}],
+    imagesUrl: [{ type: String ,
+        required: true}],
     reqTools: {type: String, required: true},
-    owner: { type: Schema.Types.ObjectId, ref: "User" },
+    author: { type: Schema.Types.ObjectId, ref: "User" },
     time: {type: Number, required: true},
     description: {type: String, required: true},
     video: { type: String},

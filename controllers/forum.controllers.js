@@ -25,7 +25,7 @@ const getForumPosts = (req, res, next) => {
 
 const getSingleForumPost = (req, res, next) => {
     Forum.findById(req.params.forumId)
-    .populate('author')
+    .populate("author comments")
     .then(post => res.send(post))
     .catch(err => console.log(err))
 }
@@ -41,8 +41,17 @@ const editForumPost = (req, res, next) => {
         },
         { new: true }
       )
+      .then(response => res.send(response))
+      .catch(err => console.log(err))
+}
+
+
+const deleteForumPost = (req, res, next) => {
+    Forum.findByIdAndDelete(req.params.forumId)
+    .then(response => console.log(response))
+    .catch(err => console.log(err))
 }
 
 
 
-module.exports = { AddForumPost, getForumPosts, getSingleForumPost, editForumPost };
+module.exports = { AddForumPost, getForumPosts, getSingleForumPost, editForumPost, deleteForumPost };

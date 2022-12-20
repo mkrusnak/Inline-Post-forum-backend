@@ -9,6 +9,8 @@ const authRouter = require('./routes/auth.routes')
 const listingRouter = require('./routes/listing.routes')
 const messagesRouter = require('./routes/messages.routes')
 const forumRouter = require('./routes/forum.routes')
+const commentsRouter = require('./routes/comments.routes')
+const diyRouter = require('./routes/diy.routes')
 
 const PORT = process.env.PORT;
 
@@ -26,7 +28,11 @@ app.use('/listings', isAuthenticated, listingRouter)
 
 app.use('/messages', isAuthenticated, messagesRouter )
 
-app.use('/forum', forumRouter)
+app.use('/forum',isAuthenticated, forumRouter)
+
+app.use('/comments', isAuthenticated, commentsRouter)
+
+app.use('/diy', isAuthenticated, diyRouter)
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(x => {

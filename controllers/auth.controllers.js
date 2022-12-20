@@ -57,6 +57,7 @@ const loginController = (req, res, next) => {
         _id: myUser._id,
         username: myUser.username,
         email: myUser.email,
+        profilePic: myUser.profilePic
       };
 
       const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {

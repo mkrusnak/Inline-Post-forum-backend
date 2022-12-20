@@ -42,7 +42,7 @@ const addListingController = (req, res, next) => {
     tradeOk,
   })
     .then((newListing) => {
-      console.log("here is new listing", newListing);
+      res.send(newListing)
     })
     .catch((err) => console.log(err));
 };
@@ -59,15 +59,15 @@ const updateListingController = (req, res, next) => {
     { new: true }
   )
     .then((updatedListing) =>
-      console.log("here is updated listing", updatedListing)
+      res.send(updatedListing)
     )
     .catch((err) => console.log(err));
 };
 
 const deleteListingController = (req, res, next) => {
-  Listing.findByIdAndDelete(req.params)
+  Listing.findByIdAndDelete(req.params.listingId)
     .then((deletedListing) =>
-      console.log("this is deleted listing", deletedListing)
+      res.send(deletedListing)
     )
     .catch((err) => console.log(err));
 };

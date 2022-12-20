@@ -9,10 +9,12 @@ const forumSchema = new Schema(
     body: { type: String, required: true },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "User"
     },
-    comments: [{type: mongoose.Schema.Types.ObjectId,
-    ref: "Comment"}]
+    comments: [{
+      type: mongoose.Schema.Types.ObjectId,
+    ref: "Comment"
+  }]
   },
   { timestamps: true }
 );

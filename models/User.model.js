@@ -2,7 +2,8 @@ const {Schema, model} = require('mongoose');
 
 const userSchema = new Schema({
 
-    profilePic: {type: String},
+    profilePic: {type: String,
+    default: 'https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492__340.jpg'},
     drivingNow: {type: String},
     drivingNowImg: {type: String},
     headerImg: {type: String},

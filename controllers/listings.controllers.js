@@ -1,6 +1,19 @@
 const Listing = require("../models/Listing.model");
 
 const addListingController = (req, res, next) => {
+
+    let currentDate = new Date();
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+
+
+
+
+
     console.log(req.body)
   const {
     makeModel,
@@ -40,6 +53,7 @@ const addListingController = (req, res, next) => {
     imagesUrl,
     knownFlaws,
     tradeOk,
+    createdAtTime:  currentDate.toLocaleString("en-US", options)
   })
     .then((newListing) => {
       res.send(newListing)

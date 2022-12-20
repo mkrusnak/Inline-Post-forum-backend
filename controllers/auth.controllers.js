@@ -5,6 +5,16 @@ const jwt = require("jsonwebtoken");
 const signupController = (req, res, next) => {
   const { email, password, username } = req.body;
 
+  let currentDate = new Date();
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
+
+
   if (!email || !password || !username) {
     return res.status(400).json({
       error: {
@@ -20,6 +30,7 @@ const signupController = (req, res, next) => {
         username,
         email,
         password: hashedPassword,
+        createdAtTime:  currentDate.toLocaleString("en-US", options)
       });
     })
     .then((createdUser) => {

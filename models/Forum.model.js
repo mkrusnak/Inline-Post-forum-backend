@@ -14,7 +14,10 @@ const forumSchema = new Schema(
     comments: [{
       type: mongoose.Schema.Types.ObjectId,
     ref: "Comment"
-  }]
+  }],
+  createdAtTime: {
+    type: String
+  }
   },
   { timestamps: true }
 );

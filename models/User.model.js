@@ -11,6 +11,9 @@ const userSchema = new Schema({
     status: {type: String},
     dreamCar: {type: String},
     dreamCarImg: {type: String},
+    createdAtTime: {
+        type: String
+      },
 
 
 

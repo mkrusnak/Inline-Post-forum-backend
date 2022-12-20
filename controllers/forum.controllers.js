@@ -1,12 +1,24 @@
 const Forum = require("../models/Forum.model");
 
 const AddForumPost = (req, res, next) => {
+
+    let currentDate = new Date();
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+
+
+
   Forum.create({
     subject: req.body.subject,
     body: req.body.body,
     author: req.payload._id,
     image: req.body.image,
     video: req.body.video,
+    createdAtTime:  currentDate.toLocaleString("en-US", options)
   })
     .then((newForum) => {
       res.send(newForum);
@@ -25,7 +37,7 @@ const getForumPosts = (req, res, next) => {
 
 const getSingleForumPost = (req, res, next) => {
     Forum.findById(req.params.forumId)
-    .populate("author comments")
+    .populate("author")
     .then(post => res.send(post))
     .catch(err => console.log(err))
 }

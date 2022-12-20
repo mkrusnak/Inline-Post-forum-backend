@@ -28,7 +28,10 @@ const listingSchema = new Schema({
 
     knownFlaws: {type: String},
     
-    tradeOk: {type: Boolean}
+    tradeOk: {type: Boolean},
+    createdAtTime: {
+      type: String
+    }
   },
   { timestamps: true });
 

@@ -9,10 +9,13 @@ const commentSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
     },
-    reference: [{
+    reference: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Forum"
-    }]
+      ref: "Diy"
+    },
+    createdAtTime: {
+      type: String
+    }
   },
   { timestamps: true }
 );

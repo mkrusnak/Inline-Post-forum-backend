@@ -5,7 +5,10 @@ const gallerySchema = new Schema({
     imageUrl: {type: String, required: true},
     title: {type: String, required: true},
     owner: { type: Schema.Types.ObjectId, ref: "User" },
-    comments: [{type: Schema.Types.ObjectId, ref: "Comment"}]
+    comments: [{type: Schema.Types.ObjectId, ref: "Comment"}],
+    createdAtTime: {
+        type: String
+      }
 },
 { timestamps: true })
 

@@ -11,7 +11,10 @@ const messageSchema = new Schema({
     recipient: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
+    createdAtTime: {
+        type: String
+      }
 
 },
 { timestamps: true })

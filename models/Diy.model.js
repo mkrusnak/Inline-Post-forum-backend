@@ -12,7 +12,10 @@ const diySchema = new Schema({
     time: {type: Number, required: true},
     description: {type: String, required: true},
     video: { type: String},
-    comments: [{type: Schema.Types.ObjectId, ref: "Comment"}]
+    comments: [{type: Schema.Types.ObjectId, ref: "Comment"}],
+    createdAtTime: {
+        type: String
+      }
 },
 { timestamps: true })
 

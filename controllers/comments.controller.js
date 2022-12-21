@@ -1,8 +1,8 @@
 const { STATES } = require('mongoose')
 const Comment = require('../models/Comment.model')
-const Diy = require('../models/Diy.model')
 
-const addCommentController = (req, res, next) => {
+
+const addCommentController = PostingTypeModel => (req, res, next) => {
  
 const postingId = req.body.reference;
 // console.log('here is postingid', postingId)
@@ -25,10 +25,15 @@ let currentDate = new Date();
         
     })
     .then(commentCreated => {
+        
         console.log(req.body.reference)
         console.log('created comment', commentCreated)
         
-        Diy.findByIdAndUpdate( postingId, {
+
+
+
+
+        PostingTypeModel.findByIdAndUpdate( postingId, {
             $push: { comments: commentCreated._id}},
             {new: true}
         )

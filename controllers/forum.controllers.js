@@ -37,6 +37,13 @@ const getForumPosts = (req, res, next) => {
 
 const getSingleForumPost = (req, res, next) => {
     Forum.findById(req.params.forumId)
+    .populate( {
+        path: 'comments',
+        populate: {
+            path: 'author', 
+            model: 'User'
+        }
+    })
     .populate("author")
     .then(post => res.send(post))
     .catch(err => console.log(err))

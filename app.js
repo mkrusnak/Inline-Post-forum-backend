@@ -11,6 +11,9 @@ const messagesRouter = require('./routes/messages.routes')
 const forumRouter = require('./routes/forum.routes')
 const commentsRouter = require('./routes/comments.routes')
 const diyRouter = require('./routes/diy.routes')
+const userRouter = require('./routes/user.routes')
+
+
 
 const PORT = process.env.PORT;
 
@@ -33,6 +36,8 @@ app.use('/forum',isAuthenticated, forumRouter)
 app.use('/comments', isAuthenticated, commentsRouter)
 
 app.use('/diy', isAuthenticated, diyRouter)
+
+app.use('/user', isAuthenticated, userRouter)
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(x => {

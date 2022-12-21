@@ -20,8 +20,13 @@ const PORT = process.env.PORT;
 const app = express();
 
 app.use(cors({
-    origin: '*'
+    origin: [process.env.FRONTEND_URL]
 }));
+
+
+// app.use(cors({
+//     origin: '*'
+// }));
 
 app.use(express.json());
 
@@ -43,7 +48,7 @@ mongoose.connect(process.env.MONGODB_URI)
 .then(x => {
     console.log('connected to db', x.connections[0].name)
     app.listen(PORT, () => {
-        console.log('Server started on port 3001')
+        console.log('Server started on port' + PORT)
     })
 })
 .catch(err => console.log('error connecting to db', err));

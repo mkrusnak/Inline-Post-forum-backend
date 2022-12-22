@@ -1,20 +1,15 @@
 const Listing = require("../models/Listing.model");
 
 const addListingController = (req, res, next) => {
+  let currentDate = new Date();
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
 
-    let currentDate = new Date();
-    const options = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-
-
-
-
-
-    console.log(req.body)
+  console.log(req.body);
   const {
     title,
     makeModel,
@@ -55,10 +50,10 @@ const addListingController = (req, res, next) => {
     imagesUrl,
     knownFlaws,
     tradeOk,
-    createdAtTime:  currentDate.toLocaleString("en-US", options)
+    createdAtTime: currentDate.toLocaleString("en-US", options),
   })
     .then((newListing) => {
-      res.send(newListing)
+      res.send(newListing);
     })
     .catch((err) => console.log(err));
 };
@@ -74,37 +69,32 @@ const updateListingController = (req, res, next) => {
     },
     { new: true }
   )
-    .then((updatedListing) =>
-      res.send(updatedListing)
-    )
+    .then((updatedListing) => res.send(updatedListing))
     .catch((err) => console.log(err));
 };
 
 const deleteListingController = (req, res, next) => {
   Listing.findByIdAndDelete(req.params.listingId)
-    .then((deletedListing) =>
-      res.send(deletedListing)
-    )
+    .then((deletedListing) => res.send(deletedListing))
     .catch((err) => console.log(err));
 };
 
- const getListingsController = (req, res, next) => {
+const getListingsController = (req, res, next) => {
   Listing.find()
-    .populate('owner')
+    .populate("owner")
     .then((foudListings) => {
-     res.send(foudListings);
+      res.send(foudListings);
     })
     .catch((err) => console.log(err));
 };
 
 const listingIdGet = (req, res, next) => {
-    Listing.findById(req.params.listingId)
-    .populate('owner')
-    .then(foundListing => { 
-        console.log('foundListing is here', foundListing)
-        res.send(foundListing)
+  Listing.findById(req.params.listingId)
+    .populate("owner")
+    .then((foundListing) => {
+      res.send(foundListing);
     })
-    .catch(err => res.send(err))
+    .catch((err) => res.send(err));
 };
 
 module.exports = {
@@ -112,5 +102,5 @@ module.exports = {
   updateListingController,
   deleteListingController,
   listingIdGet,
-  getListingsController
+  getListingsController,
 };

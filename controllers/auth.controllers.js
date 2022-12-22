@@ -13,8 +13,6 @@ const signupController = (req, res, next) => {
     day: "numeric",
   };
 
-
-
   if (!email || !password || !username) {
     return res.status(400).json({
       error: {
@@ -30,7 +28,7 @@ const signupController = (req, res, next) => {
         username,
         email,
         password: hashedPassword,
-        createdAtTime:  currentDate.toLocaleString("en-US", options)
+        createdAtTime: currentDate.toLocaleString("en-US", options),
       });
     })
     .then((createdUser) => {
@@ -65,10 +63,11 @@ const loginController = (req, res, next) => {
         return Promise.reject("Invalid email or password");
       }
       const payload = {
+        admin: myUser.admin,
         _id: myUser._id,
         username: myUser.username,
         email: myUser.email,
-        profilePic: myUser.profilePic
+        profilePic: myUser.profilePic,
       };
 
       const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {

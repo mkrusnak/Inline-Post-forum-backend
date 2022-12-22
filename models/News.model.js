@@ -1,25 +1,23 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const commentSchema = new Schema(
+const newsSchema = new Schema(
   {
-    profilePic: { type: String },
+    title: { type: String, required: true },
     text: { type: String, required: true },
+    image: { type: String, required: true },
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    reference: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Diy",
-    },
     createdAtTime: {
       type: String,
     },
+    link: { type: String, required: true },
   },
   { timestamps: true }
 );
 
-const Comment = mongoose.model("Comment", commentSchema);
+const News = mongoose.model("News", newsSchema);
 
-module.exports = Comment;
+module.exports = News;

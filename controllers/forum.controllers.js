@@ -2,6 +2,11 @@ const Forum = require("../models/Forum.model");
 
 const AddForumPost = (req, res, next) => {
 
+    const getVideoId = (str) => {
+        return str.split('=')[1];
+    }
+
+
     let currentDate = new Date();
     const options = {
       weekday: "long",
@@ -17,7 +22,7 @@ const AddForumPost = (req, res, next) => {
     body: req.body.body,
     author: req.payload._id,
     image: req.body.image,
-    video: req.body.video,
+    video: getVideoId(req.body.video),
     createdAtTime:  currentDate.toLocaleString("en-US", options)
   })
     .then((newForum) => {

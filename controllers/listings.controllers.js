@@ -16,6 +16,7 @@ const addListingController = (req, res, next) => {
 
     console.log(req.body)
   const {
+    title,
     makeModel,
     odometr,
     year,
@@ -45,6 +46,7 @@ const addListingController = (req, res, next) => {
 
   Listing.create({
     owner: req.payload._id,
+    title,
     makeModel,
     odometr,
     description,

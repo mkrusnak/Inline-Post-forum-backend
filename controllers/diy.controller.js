@@ -10,6 +10,10 @@ const addDiyController = (req, res, next) => {
       day: "numeric",
     };
 
+    const getVideoId = (str) => {
+        return str.split('=')[1];
+    }
+
 
 
     Diy.create({
@@ -18,7 +22,7 @@ const addDiyController = (req, res, next) => {
         reqTools: req.body.reqTools,
         time: req.body.time,
         description: req.body.description,
-        video: req.body.video,
+        video: getVideoId(req.body.video),
         author: req.body.author,
         imagesUrl: req.body.imagesUrl,
         createdAtTime:  currentDate.toLocaleString("en-US", options)

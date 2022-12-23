@@ -3,10 +3,11 @@ const Diy = require("../models/Diy.model");
 const addDiyController = (req, res, next) => {
   let currentDate = new Date();
   const options = {
-    weekday: "long",
+   
     year: "numeric",
     month: "long",
     day: "numeric",
+  
   };
 
   const getVideoId = (str) => {
@@ -21,7 +22,6 @@ const addDiyController = (req, res, next) => {
     description: req.body.description,
     video: getVideoId(req.body.video),
     author: req.body.author,
-    imagesUrl: req.body.imagesUrl,
     createdAtTime: currentDate.toLocaleString("en-US", options),
   })
     .then((response) => res.send(response))

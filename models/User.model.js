@@ -1,6 +1,8 @@
 const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema({
+  city: {type: String},
+  state: {type: String},
   profilePic: {
     type: String,
     default: "https://i.insider.com/55ae93e6eab8ea890522f6fd?width=700",
@@ -10,7 +12,7 @@ const userSchema = new Schema({
   headerImg: { type: String },
   prevCar: { type: String },
   prevCarImg: { type: String },
-  status: { type: String },
+  status: { type: String, dafault: "I do it for the family.." },
   dreamCar: { type: String },
   dreamCarImg: { type: String },
   createdAtTime: {

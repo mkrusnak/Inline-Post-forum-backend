@@ -3,10 +3,11 @@ const Message = require("../models/Message.model");
 const sendMessagePostController = (req, res, next) => {
   let currentDate = new Date();
   const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
+   
+    month: "numeric",
     day: "numeric",
+    hour: "numeric",
+    minute: "numeric"
   };
 
   Message.create({

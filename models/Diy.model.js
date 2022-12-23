@@ -6,7 +6,6 @@ const diySchema = new Schema(
   {
     profilePic: { type: String },
     title: { type: String, required: true },
-    imagesUrl: { type: String},
     reqTools: { type: String, required: true },
     author: { type: Schema.Types.ObjectId, ref: "User" },
     time: { type: Number, required: true },

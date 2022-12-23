@@ -3,10 +3,11 @@ const Listing = require("../models/Listing.model");
 const addListingController = (req, res, next) => {
   let currentDate = new Date();
   const options = {
-    weekday: "long",
+   
     year: "numeric",
     month: "long",
     day: "numeric",
+  
   };
 
   console.log(req.body);

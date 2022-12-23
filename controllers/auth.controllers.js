@@ -3,14 +3,14 @@ const User = require("../models/User.model");
 const jwt = require("jsonwebtoken");
 
 const signupController = (req, res, next) => {
-  const { email, password, username } = req.body;
+  const { email, password, username, state, city } = req.body;
 
   let currentDate = new Date();
   const options = {
-    weekday: "long",
+
     year: "numeric",
     month: "long",
-    day: "numeric",
+ 
   };
 
   if (!email || !password || !username) {
@@ -28,6 +28,8 @@ const signupController = (req, res, next) => {
         username,
         email,
         password: hashedPassword,
+        state,
+        city,
         createdAtTime: currentDate.toLocaleString("en-US", options),
       });
     })

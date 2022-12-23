@@ -7,10 +7,11 @@ const AddForumPost = (req, res, next) => {
 
   let currentDate = new Date();
   const options = {
-    weekday: "long",
+    
     year: "numeric",
     month: "long",
     day: "numeric",
+  
   };
 
   Forum.create({

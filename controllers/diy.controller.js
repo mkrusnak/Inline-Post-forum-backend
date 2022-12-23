@@ -3,11 +3,9 @@ const Diy = require("../models/Diy.model");
 const addDiyController = (req, res, next) => {
   let currentDate = new Date();
   const options = {
-   
     year: "numeric",
     month: "long",
     day: "numeric",
-  
   };
 
   const getVideoId = (str) => {
@@ -47,7 +45,6 @@ const getSingleDiy = (req, res, next) => {
     .populate("author")
     .then((diy) => {
       res.send(diy);
-      console.log("HERE IS COMMENTS", diy);
     })
     .catch((err) => console.log(err));
 };
@@ -55,7 +52,6 @@ const getSingleDiy = (req, res, next) => {
 const deleteDiyPost = (req, res, next) => {
   Diy.findByIdAndDelete(req.params.diyId)
     .then((response) => {
-      console.log(response);
       res.send(response);
     })
     .catch((err) => console.log(err));

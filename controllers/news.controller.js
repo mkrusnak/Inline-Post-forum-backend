@@ -2,16 +2,11 @@ const { STATES } = require("mongoose");
 const News = require("../models/News.model");
 
 const addNewsController = (req, res, next) => {
-  // const postingId = req.body.reference;
-  // console.log('here is postingid', postingId)
-
   let currentDate = new Date();
   const options = {
-   
     year: "numeric",
     month: "long",
-    day: "numeric"
-    
+    day: "numeric",
   };
 
   News.create({

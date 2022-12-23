@@ -4,8 +4,8 @@ const updateUserController = (req, res, next) => {
   User.findByIdAndUpdate(
     req.params.userId,
     {
-        city: req.body.city,
-        usstate: req.body.usstate,
+      city: req.body.city,
+      usstate: req.body.usstate,
       admin: req.body.admin,
       profilePic: req.body.profilePic,
       drivingNow: req.body.drivingNow,

@@ -7,10 +7,8 @@ const signupController = (req, res, next) => {
 
   let currentDate = new Date();
   const options = {
-
     year: "numeric",
     month: "long",
- 
   };
 
   if (!email || !password || !username) {

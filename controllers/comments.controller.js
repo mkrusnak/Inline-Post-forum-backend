@@ -6,10 +6,9 @@ const addCommentController = (PostingTypeModel) => (req, res, next) => {
 
   let currentDate = new Date();
   const options = {
-  
     year: "numeric",
     month: "numeric",
-    day: "numeric"
+    day: "numeric",
   };
 
   Comment.create({

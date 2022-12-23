@@ -1,8 +1,8 @@
 const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema({
-  city: {type: String},
-  usstate: {type: String},
+  city: { type: String },
+  usstate: { type: String },
   profilePic: {
     type: String,
     default: "https://i.insider.com/55ae93e6eab8ea890522f6fd?width=700",

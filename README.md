@@ -2,9 +2,9 @@
 
 This is backend part of my Inline-Post project.
 
-This is car forum project where you can read news, ask for help on the forum page, provide help in (Do It Yourself) section where you can post
+This is car forum project where you can read news, ask for help on the forum page, provide help in (Do It Yourself) section where you can post a
 
-a instruction on how to do specific job related to fixing/improving your vehicle, you can include video and images too.
+instruction on how to do specific job related to fixing/improving your vehicle, you can include video and images too.
 
 It also has a Marketplace where user's can list their car for sale and other users can contact them directly.
 

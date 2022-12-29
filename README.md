@@ -14,10 +14,14 @@ and you can reply directly from there. You can also navigate to other user's pro
 
 And same way you can go to your Profile Settings and customize your profile.
 
-It runs with NodeJs and i'm using Axios as the main tool to send and recieve data from the front end.
+Summary:
 
-This is my final student project that i did during  IronHack Full-Stack WebDev program.
+• Developed using MERN stack
 
-The front end is using React to display all the pages to the user.
+• Created REST API with ability to CRUD models on the frontend
+
+• Designed Authentication middleware using JSON Web Token and bcryptJs to handle passwords
+
+• Used JWT Payload to set up admin role and protect the routes
 
 Made my mkrusnak

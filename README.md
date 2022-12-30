@@ -1,4 +1,4 @@
-# project3-forum-backend "Inline-Post"
+# Inline-Post backend
 
 This is backend part of my Inline-Post project.
 
